@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: #FDFBF7;
+  color: #2D3A30;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+@layer base {
+  :root {
+    --background: 38 50% 98%;
+    --foreground: 135 14% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 135 14% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 135 14% 20%;
+    --primary: 135 17% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 20% 94%;
+    --secondary-foreground: 135 14% 20%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 130 5% 45%;
+    --accent: 14 53% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 14% 88%;
+    --input: 40 14% 88%;
+    --ring: 135 17% 35%;
+    --chart-1: 135 17% 35%;
+    --chart-2: 14 53% 60%;
+    --chart-3: 43 74% 56%;
+    --chart-4: 197 50% 45%;
+    --chart-5: 280 30% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Print styles for invoice & reports */
+@media print {
+  body { background: white !important; }
+  .no-print, aside, header, [data-testid="sidebar"], .sonner-toaster, .sidebar { display: none !important; }
+  .print-only { display: block !important; }
+  .invoice-print, .pnl-printable {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  /* Hide tabs nav when printing */
+  [role="tablist"] { display: none !important; }
+}
+
+.print-only { display: none; }
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #F4F1EA; }
+::-webkit-scrollbar-thumb { background: #C9C3B8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #A1A8A3; }
+
+@layer base {
+  [data-debug-wrapper="true"] { display: contents !important; }
+  [data-debug-wrapper="true"] > * {
+    margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
+    padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
+    column-gap: inherit; row-gap: inherit; gap: inherit;
+    border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
+    border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
+    border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
+  }
+}
